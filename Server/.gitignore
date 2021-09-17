@@ -1,0 +1,47 @@
+# Generated files
+obj/
+bin/
+Debug/
+Release/
+logs/
+__logs/
+*.[Cc]ache
+PublishProfiles/
+_UpgradeWizard_Files/
+.idea/
+
+
+# connection parameters and such
+configurations/
+
+
+# nuget packages
+packages/
+
+
+# Visual Studio (and other IDE) preferences and settings
+.vs/
+**/*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+UpgradeWizardLog.xml
+UpgradeLog.htm
+riderModule.iml
+
+
+# miscellaneous
+/workaware.MobileApp/workaware.MobileApp/Dynamic Expressions.html
+workaware.Desktop/workaware.Desktop/Controls/Map/Map.xaml.cs.orig
+/workaware.MobileApp/workaware.MobileApp/Resources/GeneralStrings.Designer.cs
+*.ldf
+workaware.MobileApp/workaware.MobileApp/ClearScriptV8-32.dll
+workaware.MobileApp/workaware.MobileApp/ClearScriptV8-64.dll
+workaware.MobileApp/workaware.MobileApp/v8-base-ia32.dll
+workaware.MobileApp/workaware.MobileApp/v8-base-x64.dll
+workaware.MobileApp/workaware.MobileApp/v8-ia32.dll
+workaware.MobileApp/workaware.MobileApp/v8-x64.dll
+NuGet.config
+/.git-credentials
