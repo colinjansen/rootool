@@ -28,7 +28,7 @@ namespace Replication.RooTool.Library.Models
         public Mapping Latitude { get; set; }
         public Mapping Longitude { get; set; }
         public Mapping LandscapeComments { get; set; }
-        public Mapping VegetationComments { get; set; }
+        public List<NoteMapping> VegetationComments { get; set; }
         public Mapping LevelOfDistruption { get; set; }
         public Mapping SoilZone { get; set; }
         public Mapping SubRegion { get; set; }

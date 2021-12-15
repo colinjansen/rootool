@@ -1,0 +1,290 @@
+[{
+        "id": 0,
+        "type": "string",
+        "columnName": "_record_id",
+        "exampleContent": ["fac561eb-eb9b-46ec-a775-5179e9166e67", "fac561eb-eb9b-46ec-a775-5179e9166e67"],
+        "mapTo": ""
+    }, {
+        "id": 1,
+        "type": "string",
+        "columnName": "_title",
+        "exampleContent": ["Lewis - OSE 140016", "Lewis - OSE 140016"],
+        "mapTo": ""
+    }, {
+        "id": 2,
+        "type": "string",
+        "columnName": "_server_updated_at",
+        "exampleContent": ["2021-04-05 19:27:34 UTC", "2021-04-05 19:27:34 UTC"],
+        "mapTo": ""
+    }, {
+        "id": 3,
+        "type": "string",
+        "columnName": "_updated_by",
+        "exampleContent": ["Mark Thomlison", "Mark Thomlison"],
+        "mapTo": ""
+    }, {
+        "id": 4,
+        "type": "string",
+        "columnName": "_geometry",
+        "exampleContent": ["SRID=4326;POINT(-113.324893001 53.5244986084)", "SRID=4326;POINT(-113.324893001 53.5244986084)"],
+        "mapTo": ""
+    }, {
+        "id": 5,
+        "type": "string",
+        "columnName": "_latitude",
+        "exampleContent": ["53.5244986084", "53.5244986084"],
+        "mapTo": ""
+    }, {
+        "id": 6,
+        "type": "string",
+        "columnName": "_longitude",
+        "exampleContent": ["-113.324893001", "-113.324893001"],
+        "mapTo": ""
+    }, {
+        "id": 7,
+        "type": "string",
+        "columnName": "ose_disposition_",
+        "exampleContent": ["Lewis - OSE 140016", "Lewis - OSE 140016"],
+        "mapTo": ""
+    }, {
+        "id": 8,
+        "type": "string",
+        "columnName": "legal_location",
+        "exampleContent": ["07-18-095-06 W4M", "07-18-095-06 W4M"],
+        "mapTo": ""
+    }, {
+        "id": 9,
+        "type": "string",
+        "columnName": "photos",
+        "exampleContent": ["8c12303d-3311-44ed-a709-8f4335626780,30ee14ea-3977-4de7-ab6b-04458aa84bf4", "8c12303d-3311-44ed-a709-8f4335626780,30ee14ea-3977-4de7-ab6b-04458aa84bf4"],
+        "mapTo": ""
+    }, {
+        "id": 10,
+        "type": "string",
+        "columnName": "criteria",
+        "exampleContent": ["Forested", "Forested"],
+        "mapTo": ""
+    }, {
+        "id": 11,
+        "type": "string",
+        "columnName": "__25_soil_disturburance_dsa_reqd_if_so",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 12,
+        "type": "string",
+        "columnName": "dsa_needed",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 13,
+        "type": "string",
+        "columnName": "drainage_is_the_sub_surface_water_flow_and_onsite_drainage_comp",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 14,
+        "type": "string",
+        "columnName": "drainage_have_disturbed_riparian_areas_onsite_been_restored_eg_",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 15,
+        "type": "string",
+        "columnName": "erosion_is_soil_erosion_eg_rills_andor_gullies_onsite_comparabl",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 16,
+        "type": "string",
+        "columnName": "bare_areas_is_the_amount_frequency_density_of_landscape_scale_b",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 17,
+        "type": "string",
+        "columnName": "stability_is_slumpingwasting_onsite_consistent_with_that_observ",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 18,
+        "type": "string",
+        "columnName": "stability_is_any_subsidence_ie_4_m2_occurring_onsite_consistent",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 19,
+        "type": "string",
+        "columnName": "operability_are_are_macro_contours_30_100_m_width_scale_present",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 20,
+        "type": "string",
+        "columnName": "operability_are_the_meso_contours_10_30_m_width_scale_present_o",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 21,
+        "type": "string",
+        "columnName": "operability_are_micro_contours_10_m_width_scale_present_onsite_",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 22,
+        "type": "string",
+        "columnName": "operability_is_surface_stoniness_overall_quantity_size_and_conc",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 23,
+        "type": "string",
+        "columnName": "debris_has_industrial_including_domestic_refuse_been_removed_",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 24,
+        "type": "string",
+        "columnName": "debris_if_coarse_woody_debris_wood_brush_is_available_is_it_spr",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 25,
+        "type": "string",
+        "columnName": "debris_is_fine_chipped_woody_debris_5_cm_thick_onsite",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 26,
+        "type": "string",
+        "columnName": "pass_fail_variance",
+        "exampleContent": ["Variance", "Variance"],
+        "mapTo": ""
+    }, {
+        "id": 27,
+        "type": "string",
+        "columnName": "landscape_comments",
+        "exampleContent": ["Test comments", "Test comments"],
+        "mapTo": ""
+    }, {
+        "id": 28,
+        "type": "string",
+        "columnName": "desired_plants_aerial_assessed_is_the_desired_plant_community_o",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 29,
+        "type": "string",
+        "columnName": "desired_plants_dsa_and_gtsa_sites_herbaceous_is_the_total_desir",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 30,
+        "type": "string",
+        "columnName": "desired_plants_dsa_and_gtsa_sites_planted_woody_for_planted_cor",
+        "exampleContent": ["yes", "yes"],
+        "mapTo": ""
+    }, {
+        "id": 31,
+        "type": "string",
+        "columnName": "quality_limiting_factors_is_there_evidence_of_drought_condition",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 32,
+        "type": "string",
+        "columnName": "quality_limiting_factors_are_the_onsite_plants_healthy_ie_disea",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 33,
+        "type": "string",
+        "columnName": "quality_limiting_factors_is_there_evidence_of_third_party_impac",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 34,
+        "type": "string",
+        "columnName": "weeds_are_problem_and_or_volunteer_species_present_that_require",
+        "exampleContent": ["no", "no"],
+        "mapTo": ""
+    }, {
+        "id": 35,
+        "type": "string",
+        "columnName": "natural_sub_region",
+        "exampleContent": ["Boreal Mixedwood", "Boreal Mixedwood"],
+        "mapTo": ""
+    }, {
+        "id": 36,
+        "type": "string",
+        "columnName": "ecosite_wetland_phase_ep_code",
+        "exampleContent": ["Poor/Acid Fen", "Poor/Acid Fen"],
+        "mapTo": ""
+    }, {
+        "id": 37,
+        "type": "string",
+        "columnName": "construction_practice",
+        "exampleContent": ["Low/Minimum Disturbance", "Low/Minimum Disturbance"],
+        "mapTo": ""
+    }, {
+        "id": 38,
+        "type": "string",
+        "columnName": "soil_zone",
+        "exampleContent": ["Mesisol", "Mesisol"],
+        "mapTo": ""
+    }, {
+        "id": 39,
+        "type": "string",
+        "columnName": "planted_natural_recovery",
+        "exampleContent": ["Peatland: Natural Recovery", "Peatland: Natural Recovery"],
+        "mapTo": ""
+    }, {
+        "id": 40,
+        "type": "string",
+        "columnName": "canopy_height_cm",
+        "exampleContent": ["30", "30"],
+        "mapTo": ""
+    }, {
+        "id": 41,
+        "type": "string",
+        "columnName": "canopy_cover_",
+        "exampleContent": ["25", "25"],
+        "mapTo": ""
+    }, {
+        "id": 42,
+        "type": "string",
+        "columnName": "trees",
+        "exampleContent": ["Alaskan Birch,Black Spruce,Tamarack", "Alaskan Birch,Black Spruce,Tamarack"],
+        "mapTo": ""
+    }, {
+        "id": 43,
+        "type": "string",
+        "columnName": "shrubs",
+        "exampleContent": ["Bog Birch,Labrador Tea,Willow spp.", "Bog Birch,Labrador Tea,Willow spp."],
+        "mapTo": ""
+    }, {
+        "id": 44,
+        "type": "string",
+        "columnName": "forbs",
+        "exampleContent": ["Palmate-Leaved Coltsfoot,Three-Leaved Solomon Seal", "Palmate-Leaved Coltsfoot,Three-Leaved Solomon Seal"],
+        "mapTo": ""
+    }, {
+        "id": 45,
+        "type": "string",
+        "columnName": "grassessedge",
+        "exampleContent": ["Sedge spp.,Water Sedge", "Sedge spp.,Water Sedge"],
+        "mapTo": ""
+    }, {
+        "id": 46,
+        "type": "string",
+        "columnName": "bryophytes",
+        "exampleContent": ["Schreber's Moss,Sphagnum spp.", "Schreber's Moss,Sphagnum spp."],
+        "mapTo": ""
+    }, {
+        "id": 47,
+        "type": "string",
+        "columnName": "vegetation_comments",
+        "exampleContent": ["Test comments ", "Test comments "],
+        "mapTo": ""
+    }
+]

@@ -50,6 +50,46 @@ namespace Replication.RooTool.Controllers
             public IFormFile File { get; set; }
         }
 
+
+        [HttpPost]
+        [Route("test")]
+        public async Task<IActionResult> ProcessFile(IFormFile inputZippedFile)
+        {
+            var ZipMimeTypes = new List<string> { "application/zip", "application/x-zip-compressed" };
+            var mimeType = inputZippedFile.ContentType.ToLower();
+
+            if (!ZipMimeTypes.Contains(mimeType))
+            {
+                return BadRequest($"unrecognized file type [{mimeType}]");
+            }
+
+            var tempFolder = $"{Path.GetTempPath()}{Guid.NewGuid()}";
+
+            try
+            {
+                using (var readStream = inputZippedFile.OpenReadStream())
+                using (var zip = ZipFile.Read(readStream))
+                {
+                    zip.ExtractAll(tempFolder);
+                }
+
+                var inputInformation = GetRooToolInputData(tempFolder);
+                var map = GetMappings();
+                var stream = await _reporting.BuildRooTool(inputInformation, map);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "workbook.xlsx");
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.StackTrace, ex.Message);
+            }
+            finally
+            {
+                Directory.Delete(tempFolder, true);
+            }
+        }
+
+
         [HttpPost]
         [Route("data/upload")]
         public async Task<IActionResult> UploadDataFile([FromForm] FileUploadDto dto)
@@ -179,41 +219,6 @@ namespace Replication.RooTool.Controllers
                 return Problem(ex.StackTrace, ex.Message);
             }
         }
-
-        //[HttpPost]
-        //[Route("process")]
-        //public async Task<IActionResult> ProcessFile(IFormFile inputZippedFile)
-        //{
-            //if (!inputZippedFile.ContentType.ToLower().Equals("application/x-zip-compressed"))
-            //{
-            //    return BadRequest("unrecognized file type");
-            //}
-
-            //var tempFolder = $"{Path.GetTempPath()}{Guid.NewGuid()}";
-
-            //try
-            //{
-            //    using (var readStream = inputZippedFile.OpenReadStream())
-            //    using (var zip = ZipFile.Read(readStream))
-            //    {
-            //        zip.ExtractAll(tempFolder);
-            //    }
-
-            //    var inputInformation = GetRooToolInputData(tempFolder);
-            //    var map = GetMappings();
-            //    var stream = await _reporting.BuildRooTool(inputInformation, map);
-            //    stream.Seek(0, SeekOrigin.Begin);
-            //    return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "workbook.xlsx");
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Problem(ex.StackTrace, ex.Message);
-            //}
-            //finally
-            //{
-            //    Directory.Delete(tempFolder, true);
-            //}
-        //}
 
         private string Base64Decode(string base64EncodedData)
         {

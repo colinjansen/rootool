@@ -375,7 +375,12 @@ namespace Replication.RooTool.Library
             //
             // Vegetation Comments
             //
-            CreateLabelCell(_sheet.Range($"X{_currentLine + 0}:AA{_currentLine + 11}"), data[_map.VegetationComments.Offset]);
+            var vegetationComments = "";
+            foreach (var comment in _map.VegetationComments)
+            {
+                vegetationComments += $"{comment.Prefix}{data[comment.Offset]}{comment.Prefix}\n";
+            }
+            CreateLabelCell(_sheet.Range($"X{_currentLine + 0}:AA{_currentLine + 11}"), vegetationComments);
 
             //
             // Images
