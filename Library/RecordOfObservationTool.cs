@@ -298,11 +298,11 @@ namespace Replication.RooTool.Library
             var locationPieces = data[_map.LegalLocation.Offset].Split(_map.LegalLocation.Seperators.ToArray());
 
             CreateDropdown(_sheet.Range($"B{_currentLine + 0}"), DataLists.Names.LAND_QUARTER);
-            CreateDropdown(_sheet.Range($"C{_currentLine + 0}"), DataLists.Names.LAND_LEGAL_SUBDIVISION, locationPieces[0]);
-            CreateDropdown(_sheet.Range($"D{_currentLine + 0}"), DataLists.Names.LAND_SECTION, locationPieces[1]);
-            CreateDropdown(_sheet.Range($"E{_currentLine + 0}"), DataLists.Names.LAND_TOWNSHIP, locationPieces[2]);
-            CreateDropdown(_sheet.Range($"F{_currentLine + 0}"), DataLists.Names.LAND_RANGE, locationPieces[3]);
-            CreateDropdown(_sheet.Range($"G{_currentLine + 0}"), DataLists.Names.LAND_MERIDIAN, locationPieces[4]);
+            CreateDropdown(_sheet.Range($"C{_currentLine + 0}"), DataLists.Names.LAND_LEGAL_SUBDIVISION, SafeGet(locationPieces, 0));
+            CreateDropdown(_sheet.Range($"D{_currentLine + 0}"), DataLists.Names.LAND_SECTION, SafeGet(locationPieces, 1));
+            CreateDropdown(_sheet.Range($"E{_currentLine + 0}"), DataLists.Names.LAND_TOWNSHIP, SafeGet(locationPieces, 2));
+            CreateDropdown(_sheet.Range($"F{_currentLine + 0}"), DataLists.Names.LAND_RANGE, SafeGet(locationPieces, 3));
+            CreateDropdown(_sheet.Range($"G{_currentLine + 0}"), DataLists.Names.LAND_MERIDIAN, SafeGet(locationPieces, 4));
 
             //
             // notes
@@ -378,7 +378,7 @@ namespace Replication.RooTool.Library
             var vegetationComments = "";
             foreach (var comment in _map.VegetationComments)
             {
-                vegetationComments += $"{comment.Prefix}{data[comment.Offset]}{comment.Prefix}\n";
+                vegetationComments += $"{comment.Prefix}{SafeGet(data, comment.Offset)}{comment.Prefix}\n";
             }
             CreateLabelCell(_sheet.Range($"X{_currentLine + 0}:AA{_currentLine + 11}"), vegetationComments);
 
@@ -440,6 +440,15 @@ namespace Replication.RooTool.Library
             _book.Protect();
             _book.SaveAs(stream);
             return stream;
+        }
+
+        private T SafeGet<T>(T[] input, int offset)
+        {
+            if (offset >= 0 && input.Length > offset)
+            {
+                return input[offset];
+            }
+            return default(T);
         }
     }
 }

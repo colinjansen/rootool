@@ -52,6 +52,7 @@ namespace Replication.RooTool.Controllers
 
 
         [HttpPost]
+        [DisableRequestSizeLimit]
         [Route("test")]
         public async Task<IActionResult> ProcessFile(IFormFile inputZippedFile)
         {
@@ -74,7 +75,7 @@ namespace Replication.RooTool.Controllers
                 }
 
                 var inputInformation = GetRooToolInputData(tempFolder);
-                var map = GetMappings();
+                var map = GetMappings(inputInformation);
                 var stream = await _reporting.BuildRooTool(inputInformation, map);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "workbook.xlsx");
@@ -250,11 +251,45 @@ namespace Replication.RooTool.Controllers
             }
         }
 
-        private Mappings GetMappings()
+        private Mappings GetMappings(InputInformation inputInformation)
         {
             var text = System.IO.File.ReadAllText("mappings.json");
             var map = JsonConvert.DeserializeObject<Mappings>(text);
+
+            if (inputInformation.Data.Length == 0)
+            {
+                throw new Exception("invalid input data: no data");
+            }
+
+            var columnNames = inputInformation.Data[0];
+            SetOffsetOfColumnName(map.ASEAerialPhotos, columnNames);
+            SetOffsetOfColumnName(map.Criteria, columnNames);
+            SetOffsetOfColumnName(map.Disposition, columnNames);
+            SetOffsetOfColumnName(map.EcoSite, columnNames);
+            SetOffsetOfColumnName(map.LandscapeComments, columnNames);
+            SetOffsetOfColumnName(map.Latitude, columnNames);
+            SetOffsetOfColumnName(map.LegalLocation, columnNames);
+            SetOffsetOfColumnName(map.LevelOfDistruption, columnNames);
+            SetOffsetOfColumnName(map.Longitude, columnNames);
+            foreach (var note in map.Notes)
+            {
+                SetOffsetOfColumnName(note, columnNames);
+            }
+            SetOffsetOfColumnName(map.Operator, columnNames);
+            SetOffsetOfColumnName(map.Regeneration, columnNames);
+            SetOffsetOfColumnName(map.SoilZone, columnNames);
+            SetOffsetOfColumnName(map.SubRegion, columnNames);
+            foreach (var comment in map.VegetationComments)
+            {
+                SetOffsetOfColumnName(comment, columnNames);
+            }
+
             return map;
+        }
+
+        private void SetOffsetOfColumnName(Mapping mapping, string[] columnNames)
+        {
+            mapping.Offset = columnNames.ToList().IndexOf(mapping.ColumnName);
         }
 
         private string[] ProcessLine(string line)

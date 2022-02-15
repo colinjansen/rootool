@@ -5,6 +5,7 @@ namespace Replication.RooTool.Library.Models
     public class Mapping
     {
         public int Offset { get; set; }
+        public string ColumnName { get; set; }
     }
     public class TokenMapping : Mapping
     {

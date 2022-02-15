@@ -1,80 +1,101 @@
 ﻿{
   "Operator": {
+    "columnName": "_updated_by",
     "Offset": 3
   },
   "Disposition": {
+    "columnName": "ose_disposition_",
     "Offset": 7
   },
   "LegalLocation": {
+    "columnName": "legal_location",
     "seperators": [ "-", " " ],
     "offset": 8
   },
   "ASEAerialPhotos": {
+    "columnName": "photos",
     "offset": 9,
     "seperators": [ "," ],
     "extension": false
   },
   "Criteria": {
+    "columnName": "criteria",
     "offset": 10
   },
   "Latitude": {
+    "columnName": "_latitude",
     "offset": 5
   },
   "Longitude": {
+    "columnName": "_longitude",
     "offset": 6
   },
   "LandscapeComments": {
+    "columnName": "landscape_comments",
     "offset": 27
   },
   "SubRegion": {
+    "columnName": "natural_sub_region",
     "Offset": 35
   },
   "EcoSite": {
+    "columnName": "ecosite_wetland_phase_ep_code",
     "Offset": 36
   },
   "LevelOfDistruption": {
+    "columnName": "construction_practice",
     "Offset": 37
   },
   "SoilZone": {
+    "columnName": "soil_zone",
     "Offset": 38
   },
   "Regeneration": {
+    "columnName": "planted_natural_recovery",
     "Offset": 39
   },
   "VegetationComments": [
     {
+      "columnName": "canopy_height_cm",
       "Offset": 40,
       "Prefix": "Canopy Height: ",
       "Suffix": "cm"
     },
     {
+      "columnName": "canopy_cover_",
       "Offset": 41,
       "Prefix": "Canopy Cover: ",
       "Suffix": "cm"
     },
     {
+      "columnName": "trees",
       "Offset": 42,
       "Prefix": "Trees: "
     },
     {
+      "columnName": "shrubs",
       "Offset": 43,
       "Prefix": "Shrubs: "
     },
     {
+      "columnName": "forbs",
       "Offset": 44,
       "Prefix": "Forbs: "
     },
     {
+      "columnName": "grassessedge",
       "Offset": 45,
       "Prefix": "Grasses/Sedge: "
     },
     {
+      "columnName": "bryophytes",
       "Offset": 46,
       "Prefix": "Bryophytes: "
     }
   ],
   "Notes": [
     {
+      "columnName": "vegetation_comments",
       "offset": 47
     }
   ]
