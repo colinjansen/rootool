@@ -4,6 +4,7 @@ using Replication.RooTool.Library.Models;
 using System;
 using System.IO;
 using CoordinateSharp;
+using System.Text.RegularExpressions;
 
 namespace Replication.RooTool.Library
 {
@@ -223,10 +224,9 @@ namespace Replication.RooTool.Library
             }
             _sheet.Row(_currentLine + 2).Height = 2;
 
-            r = _sheet.Range($"A1:ZZ99");
-            r.Style.Font.FontName = "Tahoma";
-            r.Style.Font.FontSize = 7;
-            r.Style.Fill.BackgroundColor = XLColor.White;
+            _sheet.Style.Font.FontName = "Tahoma";
+            _sheet.Style.Font.FontSize = 7;
+            _sheet.Style.Fill.BackgroundColor = XLColor.White;
 
             CreateLabelCell(_sheet.Range($"B{_currentLine + 0}:F{_currentLine + 1}"), "OIL SANDS EXPLORATION (OSE) AERIAL ASSESSMENT");
             CreateLabelCell(_sheet.Range($"B{_currentLine + 3}:G{_currentLine + 3}"), "Corehole Location");
@@ -370,7 +370,7 @@ namespace Replication.RooTool.Library
             // Landscape Comments
             //
             
-            CreateLabelCell(_sheet.Range($"T{_currentLine + 0}:W{_currentLine + 11}"), data[_map.LandscapeComments.Offset]);
+            CreateLabelCell(_sheet.Range($"T{_currentLine + 0}:W{_currentLine + 11}"), SafeGet(data, _map.LandscapeComments.Offset));
 
             //
             // Vegetation Comments
@@ -378,7 +378,7 @@ namespace Replication.RooTool.Library
             var vegetationComments = "";
             foreach (var comment in _map.VegetationComments)
             {
-                vegetationComments += $"{comment.Prefix}{SafeGet(data, comment.Offset)}{comment.Prefix}\n";
+                vegetationComments += $"{comment.Prefix}{SafeGet(data, comment.Offset)}{comment.Suffix}\n";
             }
             CreateLabelCell(_sheet.Range($"X{_currentLine + 0}:AA{_currentLine + 11}"), vegetationComments);
 
@@ -388,10 +388,12 @@ namespace Replication.RooTool.Library
             CreateLabelCell(_sheet.Range($"AB{_currentLine + 0}:AG{_currentLine + 11}"), "");
             CreateLabelCell(_sheet.Range($"AH{_currentLine + 0}:AM{_currentLine + 11}"), "");
 
-            var imageData = data[_map.ASEAerialPhotos.Offset].Split(_map.ASEAerialPhotos.Seperators.ToArray());
-            if (imageData.Length > 0)
+            //MatchCollection of length 2
+            var mc = Regex.Matches(SafeGet(data, _map.ASEAerialPhotos.Offset), @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})");
+            
+            if (mc.Count > 0)
             {
-                var key = imageData[0].Trim();
+                var key = mc[0].Value;
                 if (_input.Photos.ContainsKey(key))
                 {
                     var imc = _sheet.Cell($"AB{_currentLine + 0}");
@@ -400,9 +402,9 @@ namespace Replication.RooTool.Library
                     pic.WithSize(w, h);
                 }
             }
-            if (imageData.Length > 1)
+            if (mc.Count > 1)
             {
-                var key = imageData[1].Trim();
+                var key = mc[1].Value;
                 if (_input.Photos.ContainsKey(key))
                 {
                     var imc = _sheet.Cell($"AH{_currentLine + 0}");
