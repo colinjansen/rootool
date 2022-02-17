@@ -368,8 +368,7 @@ namespace Replication.RooTool.Library
 
             //
             // Landscape Comments
-            //
-            
+            //            
             CreateLabelCell(_sheet.Range($"T{_currentLine + 0}:W{_currentLine + 11}"), SafeGet(data, _map.LandscapeComments.Offset));
 
             //
@@ -391,23 +390,13 @@ namespace Replication.RooTool.Library
             //MatchCollection of length 2
             var mc = Regex.Matches(SafeGet(data, _map.ASEAerialPhotos.Offset), @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})");
             
-            if (mc.Count > 0)
+            for (var i = 0; i < mc.Count; i++)
             {
-                var key = mc[0].Value;
+                var key = mc[i].Value;
                 if (_input.Photos.ContainsKey(key))
                 {
-                    var imc = _sheet.Cell($"AB{_currentLine + 0}");
-                    var pic = _sheet.AddPicture(_input.Photos[key].FullName).MoveTo(imc);
-                    var (w, h) = ScaleImage(pic, 180, 190);
-                    pic.WithSize(w, h);
-                }
-            }
-            if (mc.Count > 1)
-            {
-                var key = mc[1].Value;
-                if (_input.Photos.ContainsKey(key))
-                {
-                    var imc = _sheet.Cell($"AH{_currentLine + 0}");
+                    var columnName = GetExcelColumnName(28 + (i * 6));
+                    var imc = _sheet.Cell($"{columnName}{_currentLine + 0}");
                     var pic = _sheet.AddPicture(_input.Photos[key].FullName).MoveTo(imc);
                     var (w, h) = ScaleImage(pic, 180, 190);
                     pic.WithSize(w, h);
@@ -451,6 +440,18 @@ namespace Replication.RooTool.Library
                 return input[offset];
             }
             return default(T);
+        }
+
+        private string GetExcelColumnName(int columnNumber)
+        {
+            string columnName = "";
+            while (columnNumber > 0)
+            {
+                int modulo = (columnNumber - 1) % 26;
+                columnName = Convert.ToChar('A' + modulo) + columnName;
+                columnNumber = (columnNumber - modulo) / 26;
+            }
+            return columnName;
         }
     }
 }
