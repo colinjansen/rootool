@@ -245,7 +245,7 @@ namespace Replication.RooTool.Library
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             r = CreateLabelCell(_sheet.Range($"H{_currentLine + 0}:N{_currentLine + 0}"), "Operator Name");
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-            r = CreateLabelCell(_sheet.Range($"H{_currentLine + 1}:N{_currentLine + 1}"), data[_map.Operator.Offset]);
+            r = CreateLabelCell(_sheet.Range($"H{_currentLine + 1}:N{_currentLine + 1}"), SafeGet(data, _map.Operator.Offset));
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             r.Style.Fill.BackgroundColor = GREY_FILL;
             r = CreateLabelCell(_sheet.Range($"O{_currentLine + 0}:W{_currentLine + 0}"), "Unique ID / License No");
@@ -255,7 +255,7 @@ namespace Replication.RooTool.Library
             r.Style.Fill.BackgroundColor = GREY_FILL;
             r = CreateLabelCell(_sheet.Range($"X{_currentLine + 0}:AF{_currentLine + 0}"), "Disposition #");
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-            r = CreateLabelCell(_sheet.Range($"X{_currentLine + 1}:AF{_currentLine + 1}"), data[_map.Disposition.Offset]);
+            r = CreateLabelCell(_sheet.Range($"X{_currentLine + 1}:AF{_currentLine + 1}"), SafeGet(data, _map.Disposition.Offset));
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             r.Style.Fill.BackgroundColor = GREY_FILL;
 
@@ -277,7 +277,7 @@ namespace Replication.RooTool.Library
             r = CreateLabelCell(_sheet.Range($"AH{_currentLine + 0}:AL{_currentLine + 0}"), "123234");
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             r.Style.Fill.BackgroundColor = GREY_FILL;
-            r = CreateLabelCell(_sheet.Range($"AH{_currentLine + 1}:AL{_currentLine + 1}"), data[_map.Criteria.Offset]);
+            r = CreateLabelCell(_sheet.Range($"AH{_currentLine + 1}:AL{_currentLine + 1}"), SafeGet(data, _map.Criteria.Offset));
             r.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             r.Style.Fill.BackgroundColor = GREY_FILL;
 
@@ -388,7 +388,7 @@ namespace Replication.RooTool.Library
             CreateLabelCell(_sheet.Range($"AH{_currentLine + 0}:AM{_currentLine + 11}"), "");
 
             //MatchCollection of length 2
-            var mc = Regex.Matches(SafeGet(data, _map.ASEAerialPhotos.Offset), @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})");
+            var mc = Regex.Matches(SafeGet(data, _map.ASEAerialPhotos.Offset) ?? string.Empty, @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})");
             
             for (var i = 0; i < mc.Count; i++)
             {

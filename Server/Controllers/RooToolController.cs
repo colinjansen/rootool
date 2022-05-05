@@ -353,12 +353,15 @@ namespace Replication.RooTool.Controllers
                 .Select(line => ProcessLine(line))
                 .ToArray();
 
-            foreach (var photo in Directory.GetFiles($"{tempFolder}/photos"))
+            if (Directory.Exists($"{tempFolder}/photos"))
             {
-                var photoInfo = new FileInfo(photo);
-                info.Photos.Add(Path.GetFileNameWithoutExtension(photoInfo.FullName), photoInfo);
+                foreach (var photo in Directory.GetFiles($"{tempFolder}/photos"))
+                {
+                    var photoInfo = new FileInfo(photo);
+                    info.Photos.Add(Path.GetFileNameWithoutExtension(photoInfo.FullName), photoInfo);
+                }
             }
-
+            
             return info;
         }
     }
